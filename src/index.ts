@@ -36,7 +36,7 @@ async function scrapeAmazonWithPuppeteer() {
             // code to run in the browser's page context
             const items: PurchasedProducts[] = [];
 
-            Array.from(document.querySelectorAll('.your-orders-content-container .order-card')).forEach(order => {
+            Array.from(document.querySelectorAll('.your-orders-content-container .order-card')).slice(0, 10).forEach(order => {
                 const price = order.querySelector('.order-info .yohtmlc-order-total .a-color-secondary > span')?.textContent?.trim();
                 const productName = order.querySelector('.shipment-is-delivered .a-col-left .a-col-right .a-link-normal')?.textContent?.trim();
                 const relativeUrl = order.querySelector('.shipment-is-delivered .a-col-left .a-col-right .a-link-normal')?.getAttribute('href'); // Returns the relative url
